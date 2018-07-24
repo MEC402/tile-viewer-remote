@@ -1,15 +1,24 @@
 import WebSocketAsPromised from 'websocket-as-promised'
 
 export default class RemoteControlClient {
-  constructor (host = '10.29.2.116', port = 16503, route = '/ws') {
-    this.serverAddress = 'ws://' + host + ':' + port + route
+  constructor (host, port = 16502, route = '/ws') {
+    if (host == null) {
+      host = location.hostname
+      port = location.port
+    }
+    this.serverAddress = this.getProtocol() + host + ':' + port + route
     this.socket = null
     this.transactionID = 0
     this.responseQueue = {}
     this.socket = this.getSocket()
   }
-  configure (host = '10.29.2.116', port = 16503, route = '/ws') {
-    this.serverAddress = 'ws://' + host + ':' + port + route
+
+  getProtocol () {
+    return location.protocol === 'https:' ? 'wss://' : 'ws://'
+  }
+
+  configure (host = '10.29.2.116', port = 16502, route = '/ws') {
+    this.serverAddress = this.getProtocol() + host + ':' + port + route
   }
 
   reconnect () {
@@ -37,10 +46,14 @@ export default class RemoteControlClient {
   }
 
   ensureSocket () {
-    if (!(this.socket.isOpened || this.socket.isOpening)) {
-      this.socket = this.getSocket()
+    try {
+      if (!(this.socket.isOpened || this.socket.isOpening)) {
+        this.socket = this.getSocket()
+      }
+      return this.socket.open()
+    } catch (error) {
+      Promise.reject(error)
     }
-    return this.socket.open()
   }
 
   refresh () {
@@ -103,6 +116,7 @@ export default class RemoteControlClient {
   }
 
   setURI (address, uri) {
+    // TODO catch errors when the connection is dropped
     this.ensureSocket().then(() => {
       return this.socket.sendPacked({
         command: 'route_to_client',
