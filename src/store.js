@@ -2,7 +2,6 @@ import RemoteControlClient from './remoteControlClient.js'
 
 const config = {
   state: {
-    // remote: (() => { let remote = new RemoteControlClient(); remote.init(); return remote })(),
     remote: new RemoteControlClient(),
     clients: [],
     media: [],
@@ -53,6 +52,9 @@ const config = {
           (result) => {
             context.commit('setClients', result.clients)
             context.commit('setMedia', result.media)
+            if (!result.media.includes(context.state.currentMediaItem)) {
+              context.commit('setCurrentMediaItem', undefined)
+            }
             resolve()
           },
           (error) => {
