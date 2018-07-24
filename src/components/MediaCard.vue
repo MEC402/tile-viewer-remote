@@ -21,12 +21,6 @@ import {
 
 export default {
   name: 'MediaCard',
-  props: ['item'],
-  methods: {
-    setURI () {
-      this.$store.commit('setCurrentMediaItem', this.item)
-    }
-  },
   components: {
     f7Card,
     f7CardHeader,
@@ -34,6 +28,12 @@ export default {
     f7CardContent,
     f7Button,
     f7Link
+  },
+  props: ['item'],
+  methods: {
+    setURI () {
+      this.$store.commit('setCurrentMediaItem', this.item)
+    }
   }
 }
 </script>

@@ -24,13 +24,6 @@ import ClientCard from './ClientCard.vue'
 
 export default {
   name: 'ClientCards',
-  props: [ 'clients' ],
-  data () {
-    return {
-      uriOverride: '',
-      uri: ''
-    }
-  },
   components: {
     f7Statusbar,
     f7Navbar,
@@ -42,6 +35,13 @@ export default {
     f7CardContent,
     f7Button,
     ClientCard
+  },
+  props: [ 'clients' ],
+  data () {
+    return {
+      uriOverride: '',
+      uri: ''
+    }
   }
 }
 </script>
