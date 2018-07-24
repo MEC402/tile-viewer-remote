@@ -8,22 +8,23 @@ div
       f7-navbar(title="TileViewer Remote")
       //- Main cards
       div(style="padding-bottom: 5.5em;")
-        //- Currently selected image
         div(class="card-container")
-          f7-card(v-if="currentURI !== ''")
-            f7-card-header
-              div Currently Selected
-            f7-card-content(style="justify: left" class="image-card-content")
-              div(v-if="currentThumbnailURI == null" style="padding: 0.25em;") No Media Selected
-              img(v-else v-bind:src="currentThumbnailURI")
-            //- f7-card-footer
-            //-   div
-            //-   f7-button(outline v-on:click="") Apply All
-        //- Media
-        media-cards(:media="media" @refresh="refresh")
-        //- Clients
-        client-cards(:clients="clients" @refresh="refresh")
-      //- configuration FAB
+          //- Currently selected image
+          div(class="card-container")
+            f7-card(v-if="currentURI !== ''")
+              f7-card-header
+                div Currently Selected
+              f7-card-content(style="justify: left" class="image-card-content")
+                div(v-if="currentThumbnailURI == null" style="padding: 0.25em;") No Media Selected
+                img(v-else v-bind:src="currentThumbnailURI")
+              //- f7-card-footer
+              //-   div
+              //-   f7-button(outline v-on:click="") Apply All
+          //- Media
+          media-cards(:media="media" @refresh="refresh")
+          //- Clients
+          client-cards(:clients="clients" @refresh="refresh")
+      //- configuration Floating Action Button (FAB)
       f7-fab
         f7-icon(fa="wrench" class="fa-lg")
         f7-icon(fa="times" class="fa-lg")
