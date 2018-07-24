@@ -1,3 +1,5 @@
+const OfflinePlugin = require('offline-plugin')
+
 module.exports = {
   // where to output built files
   outputDir: 'dist',
@@ -12,6 +14,12 @@ module.exports = {
   // see https://github.com/vuejs/vue-cli/tree/dev/docs/config#configurewebpack and https://github.com/vuejs/vue-cli/blob/dev/docs/guide/webpack.md
   chainWebpack: () => { },
   configureWebpack: {
+    plugins: [
+      new OfflinePlugin({
+        relativePaths: false,
+        publicPath: '/'
+      })
+    ]
   },
 
   // CSS related options
@@ -36,16 +44,19 @@ module.exports = {
   // enabled by default if the machine has more than 1 cores
   parallel: require('os').cpus().length > 1,
 
-  // options for the PWA plugin.
-  // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
-  pwa: {
-    name: 'TileViewer Remote',
-    themeColor: '#4DBA87',
-    workboxOptions: {
-      importWorkboxFrom: 'local',
-      globPatterns: ['manifest.json', 'service-worker.js']
-    }
-  },
+  // // options for the PWA plugin.
+  // // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
+  // pwa: {
+  //   name: 'TileViewer Remote',
+  //   themeColor: '#4DBA87',
+  //   workboxOptions: {
+  //     // importWorkboxFrom: 'local',
+  //     // globPatterns: ['index.html', 'service-worker.js', 'manifest.json', 'favicon.ico'],
+  //     // swDest: 'js/service-worker.js',
+  //     clientsClaim: true,
+  //     skipWaiting: true
+  //   }
+  // },
 
   // configure webpack-dev-server behavior
   devServer: {

@@ -8,11 +8,13 @@ import Framework7Vue from 'framework7-vue/dist/framework7-vue.esm.bundle.js'
 import Framework7Styles from 'framework7/css/framework7.min.css'
 import './theme.scss'
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 import NoSleep from 'nosleep.js'
-import './registerServiceWorker'
 
 import App from './App.vue'
 import config from './store'
+
+OfflinePluginRuntime.install()
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
@@ -42,6 +44,7 @@ new Vue({
     id: 'edu.boisestate.coen.cs.vr.tile-viewer-remote',
     name: 'TileViewer Remote',
     theme: 'auto'
+    // theme: 'md'
     // theme: 'ios'
   }
 }).$mount(root)
