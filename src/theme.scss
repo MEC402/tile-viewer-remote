@@ -1,0 +1,97 @@
+:root {
+    transition: 0.25s all;
+}
+
+.color-theme-adjust {
+    filter: saturate(80%) hue-rotate(15deg);
+    // filter: saturate(80%);
+}
+
+.true-color {
+    filter: saturate(80%) hue-rotate(15deg);
+}
+
+div.card {
+    display: inline-block;
+    min-width: 20em;
+    .button {
+        display: inline-block;
+        margin: 0 0.25em;
+        // padding: 0 0.25em;
+    }
+    
+    > div.card-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            max-width: 100%;
+            // object-fit: cover;
+        }
+    }
+
+    div.image-card-content {
+        padding: 0;
+    }
+}
+
+div.card-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    div.card {
+        flex-grow: 1;
+    }
+}
+
+div.fab.fab-right-bottom {
+    padding-right: 1em;
+    div.fab-buttons {
+        margin-left: -2em;
+    }
+}
+
+/*
+$theme-color: #4DBA87;
+
+.color-theme-custom {
+    .button {
+        color: $theme-color;
+        border-color: $theme-color;
+        display: inline-block;
+    }
+
+    .button.button-outline {
+        border-color: $theme-color;
+    }
+
+    .button.button-fill {
+        background-color: $theme-color;
+    }
+
+    div > a.link {
+        color: $theme-color;
+    }
+
+    .navbar.md-only {
+        background-color: $theme-color;
+    }
+
+    .fab {
+        > a {
+            background-color: $theme-color;
+        }
+        > a.active-state {
+            background-color: darken($theme-color, 10%);
+        }
+        > .fab-buttons {
+            > a {
+                background-color: $theme-color;
+            }
+            > a.active-state {
+                background-color: darken($theme-color, 10%);
+            }
+        }
+    }
+}
+*/

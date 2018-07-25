@@ -1,0 +1,37 @@
+{
+  "name": "tile-viewer-remote",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "framework7": "^3.0.0-beta.5",
+    "framework7-vue": "^2.3.0",
+    "gulp": "^3.9.1",
+    "node-sass": "^4.9.0",
+    "nosleep.js": "^0.7.0",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "register-service-worker": "^1.4.0",
+    "sass-loader": "^7.0.1",
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1",
+    "websocket-as-promised": "^0.6.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.14",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.14",
+    "@vue/cli-plugin-pwa": "^3.0.0-beta.14",
+    "@vue/cli-service": "^3.0.0-beta.14",
+    "@vue/eslint-config-standard": "^3.0.0-beta.14",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
